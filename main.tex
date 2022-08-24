@@ -1,0 +1,284 @@
+\documentclass[headings=chapterprefix,a5paper]{book}
+\usepackage{tikz}
+\usepackage{tocloft}
+\usepackage{auto-pst-pdf} 
+\usepackage{pgfornament}
+\usepackage{amsmath}
+\usepackage{gensymb} % Для знака градуса
+\usepackage{flexisym} % Для знака минуты
+
+\newcommand\MyVarAuthorName{А.А.~Соболев}
+\newcommand\MyVarBookName{Вепсская летопись}
+
+\usepackage{pstricks}
+\usepackage{psvectorian}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cmap}
+
+% эпиграф
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.65\textwidth}
+\renewcommand{\textflush}{flushleft} \renewcommand{\sourceflush}{flushleft}
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]{\originalepigraph{\textit{#1}}{\scriptsize{#2}}} %\textsc
+
+%------------------------------------------------------------------------------------------------------------
+%настройки для А4
+%\usepackage[12pt]{extsizes}
+%\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+%\linespread{1.15} % по умолчанию 1.0
+%------------------------------------------------------------------------------------------------------------
+%настройки для А5
+\usepackage[11pt]{extsizes}
+\usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm]{geometry}
+\linespread{1.0} % по умолчанию 1.0
+%------------------------------------------------------------------------------------------------------------
+%настройки для А4
+%\newcommand{\corner}[1]{%
+%	\begin{tikzpicture}[remember picture, overlay]
+%	\node[anchor=north east, shift={(-2.5cm,-5.3cm)}] at (current page.north east){%
+%		\pgfornament[width=2.2cm]{#1}};
+%	\end{tikzpicture}%
+%}
+%------------------------------------------------------------------------------------------------------------
+%настройки для А5
+\newcommand{\corner}[1]{%
+	\begin{tikzpicture}[remember picture, overlay]
+	\node[anchor=north east, shift={(-1.5cm,-4.2cm)}] at (current page.north east){%
+		\pgfornament[width=2.2cm]{#1}};
+	\end{tikzpicture}%
+}
+%------------------------------------------------------------------------------------------------------------
+\usetikzlibrary{celtic}
+\newcommand{\uzor}{%	
+\begin{center}
+	\begin{tikzpicture}[%
+	scale=0.17,
+	transform shape,
+	celtic path/.style={
+		draw,
+		black!10!red,
+%		double distance=0.6mm,
+%		line width=0.375mm
+		double=white,%black!10!red, 
+		double distance=0.6mm,
+		line width=0.3mm
+	}
+	]
+	\CelticDrawPath{
+		size={64,4},
+		max steps=64
+	}
+	\end{tikzpicture}	
+\end{center}
+}
+
+\newcommand{\greenline}{
+\begin{center}
+	\begin{tikzpicture}
+		\fill[fill=black!30!green,] (0,0) rectangle (10.8,0.2);
+	\end{tikzpicture}
+\end{center}
+}
+%---------------------------------------------------------------------
+\usepackage{indentfirst} % Первая строка главы - с красной строки
+\setlength{\parindent}{1.0cm} % Отступ слева первой абзаца
+\setlength{\parskip}{0.25cm} % Отступ между абзацами
+
+% Заголовки сверху и снизу каждой страницы (Headers & footers)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{}}
+
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize \MyVarBookName}}
+
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize \MyVarAuthorName }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}%
+}
+\renewcommand{\chaptermark}[1]{\markright{Часть \thepart.\ \chaptername\ \thechapter.\ #1}{}}
+
+%\usepackage{tikz}
+\newcommand\blankpage{% Пустая страница
+	\null
+	\thispagestyle{empty}%
+	\newpage
+}
+
+\newcommand{\sdash}{\nobreakdash-}  % Дефис неразрывный без пробелов до и после
+\newcommand{\ndash}{\nobreakdash~--~}  % Короткое тире неразрывное с пробелами до и после
+\newcommand{\mdash}{\nobreakdash~---~} % Длинное тире неразрывное с пробелами до и после
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tocloft,calc}
+%\usepackage[newparttoc]{titlesec}
+%\usepackage{titletoc}
+%\usepackage{lipsum}
+%\usepackage{tocbasic}
+%
+%\titleformat{\part}[display]
+%{\centering\Huge\bfseries}{\partname~\thepart}
+%{1em}{\normalfont\bfseries}
+%
+%\titlecontents{part}[3pc]{\addvspace{3pc}\filcenter}
+%{\bfseries\partname~\thecontentslabel\\*[.2pc]\large}
+%{\bfseries\large}{}[\addvspace{1pc}]
+%
+%%\renewcommand\cftchapdotsep{\cftdotsep}
+%\titlecontents{chapter}[0em]{}
+%{\bfseries\chaptername~\thecontentslabel\hspace{2em}}
+%{\bfseries}
+%{\mdseries\titlerule*[0.75em]{.}\bfseries\contentspage}
+
+%\renewcommand{\cftpartfont}{\hfill\Large\bfseries\centering}
+\usepackage{xpatch}
+\makeatletter
+\patchcmd{\l@part}{#1}{{\underline{Часть #1}}\vspace{1.5em}}{}{}
+\makeatother
+\addtocontents{toc}{\cftpagenumbersoff{part}}
+
+%\renewcommand{\cftpartpresnum}{\Large Часть }
+%\setlength{\cftbeforepartskip}{2.5em}
+%\AtBeginDocument{\addtolength\cftpartnumwidth{\widthof{\bfseries Часть }}}
+
+\renewcommand{\cftchappresnum}{ ~~Глава }
+\setlength{\cftbeforechapskip}{0.7em}
+%\renewcommand\cftchapafterpnum{\vskip 0em} % for spacing after each entry
+\AtBeginDocument{\addtolength\cftchapnumwidth{\widthof{\bfseries ~~Глава~~ }}}
+
+\renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\clubpenalty=10000  % Это костыль против
+\widowpenalty=10000 % "висячих" строк
+
+\righthyphenmin=200 % Избавляемся
+{\sloppy			% от переносов слов
+%\begin{titlepage}
+%\author{\MyVarAuthorName}
+%\title{\MyVarBookName}
+%\date{2006\\Москва\\Самиздат}
+%\maketitle
+%\end{titlepage}
+\begin{titlepage}
+	\newpage
+	\begin{center}
+		\huge \textbf \MyVarAuthorName
+	\end{center}	
+	\vspace{2.8cm}	
+	
+	%\greenline
+\uzor
+	
+	\begin{center}
+		\Huge \textbf {ВЕПССКАЯ\\ЛЕТОПИСЬ}
+	\end{center}	
+	\vspace{0.0cm}
+
+%	\greenline
+	\uzor
+
+	\begin{center}
+		\small {СБОРНИК ПОВЕСТЕЙ О СПЛАВАХ НА БАЙДАРКЕ\\ПО РЕКАМ ГОРЮН, ЛИДЬ, ЧАГОДА, ЧАГОДОЩА, ПЕСЬ}
+	\end{center}
+
+%	\greenline
+	\uzor
+		
+	\vspace{\fill}	
+	\begin{center}
+		\normalsize
+		Москва \linebreak 
+		2022 \linebreak
+		Самиздат
+	\end{center}	
+\end{titlepage}
+\include{annotation} % Аннотация
+%\blankpage
+%\include{introduce}
+\blankpage
+\tableofcontents
+\blankpage
+%
+% ЧАСТЬ 1 - ЛИДЬ 2015
+%
+\include{part1}
+\include{part1_annotation} % Аннотация
+\blankpage
+\include{part1_introduce}
+\blankpage
+\include{part1_chapter1} 
+%\include{part1_chapter2} 
+%\include{part1_chapter3} 
+%\include{part1_chapter4}
+%\include{part1_chapter5}
+%\include{part1_chapter6}
+%\include{part1_chapter7}
+%\include{part1_chapter8}
+%\include{part1_chapter9}
+%\include{part1_chapter10}
+%\include{part1_chapter11}
+%\include{part1_chapter12}
+%\include{part1_chapter13}
+%\include{part1_chapter14}
+%\include{part1_chapter15}
+%
+% ЧАСТЬ 2 - ГОРЮН 2016
+%
+\include{part2}
+\include{part2_annotation} % Аннотация
+\blankpage
+\include{part2_introduce}
+\blankpage
+\include{part2_chapter1} 
+\include{part2_chapter2} 
+\include{part2_chapter3} 
+\include{part2_chapter4} 
+\include{part2_chapter5} 
+\include{part2_chapter6} 
+\include{part2_chapter7} 
+\include{part2_chapter8} 
+\include{part2_chapter9}
+\include{part2_chapter10}
+\include{part2_chapter11}
+\include{part2_chapter12}
+\include{part2_chapter13}
+\include{part2_chapter14}
+%
+% ЧАСТЬ 3 - ЛИДЬ 2017
+%
+\include{part3}
+\include{part3_annotation} % Аннотация
+\blankpage
+\include{part3_introduce}
+\blankpage
+\include{part3_chapter1}
+\include{part3_chapter2}
+\include{part3_chapter3}
+\include{part3_chapter4}
+\include{part3_chapter5}
+\include{part3_chapter6}
+\include{part3_chapter7}
+\include{part3_chapter8}
+\include{part3_chapter9}
+\include{part3_chapter10}
+%
+%\include{bibliography}
+}
+\end{document}
