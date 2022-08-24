@@ -12,9 +12,16 @@
 
 \usepackage{pstricks}
 \usepackage{psvectorian}
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
+%--------------------------------------
+
 \usepackage{cmap}
+%\usepackage[backend=biber]{biblatex}
 
 % эпиграф
 \usepackage{epigraph}
@@ -23,6 +30,7 @@
 \let\originalepigraph\epigraph 
 \renewcommand\epigraph[2]{\originalepigraph{\textit{#1}}{\scriptsize{#2}}} %\textsc
 
+%\addbibresource{bibliography.bib}
 %------------------------------------------------------------------------------------------------------------
 %настройки для А4
 %\usepackage[12pt]{extsizes}
@@ -241,44 +249,46 @@
 %
 % ЧАСТЬ 2 - ГОРЮН 2016
 %
-\include{part2}
-\include{part2_annotation} % Аннотация
-\blankpage
-\include{part2_introduce}
-\blankpage
-\include{part2_chapter1} 
-\include{part2_chapter2} 
-\include{part2_chapter3} 
-\include{part2_chapter4} 
-\include{part2_chapter5} 
-\include{part2_chapter6} 
-\include{part2_chapter7} 
-\include{part2_chapter8} 
-\include{part2_chapter9}
-\include{part2_chapter10}
-\include{part2_chapter11}
-\include{part2_chapter12}
-\include{part2_chapter13}
-\include{part2_chapter14}
+%\include{part2}
+%\include{part2_annotation} % Аннотация
+%\blankpage
+%\include{part2_introduce}
+%\blankpage
+%\include{part2_chapter1} 
+%\include{part2_chapter2} 
+%\include{part2_chapter3} 
+%\include{part2_chapter4} 
+%\include{part2_chapter5} 
+%\include{part2_chapter6} 
+%\include{part2_chapter7} 
+%\include{part2_chapter8} 
+%\include{part2_chapter9}
+%\include{part2_chapter10}
+%\include{part2_chapter11}
+%\include{part2_chapter12}
+%\include{part2_chapter13}
+%\include{part2_chapter14}
 %
 % ЧАСТЬ 3 - ЛИДЬ 2017
 %
-\include{part3}
-\include{part3_annotation} % Аннотация
-\blankpage
-\include{part3_introduce}
-\blankpage
-\include{part3_chapter1}
-\include{part3_chapter2}
-\include{part3_chapter3}
-\include{part3_chapter4}
-\include{part3_chapter5}
-\include{part3_chapter6}
-\include{part3_chapter7}
-\include{part3_chapter8}
-\include{part3_chapter9}
-\include{part3_chapter10}
+%\include{part3}
+%\include{part3_annotation} % Аннотация
+%\blankpage
+%\include{part3_introduce}
+%\blankpage
+%\include{part3_chapter1}
+%\include{part3_chapter2}
+%\include{part3_chapter3}
+%\include{part3_chapter4}
+%\include{part3_chapter5}
+%\include{part3_chapter6}
+%\include{part3_chapter7}
+%\include{part3_chapter8}
+%\include{part3_chapter9}
+%\include{part3_chapter10}
 %
-%\include{bibliography}
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+%\printbibliography
 }
 \end{document}
