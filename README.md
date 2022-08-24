@@ -5,7 +5,7 @@
 # Build instructions
 
 В терминале набрать:
-
+```
 mkdir build && cd build && cmake .. && make
-
+```
 После чего в директории /output появится конечный pdf файл.

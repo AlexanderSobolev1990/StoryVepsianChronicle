@@ -1,31 +1,62 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
-PROJECT(StoryLidChagodaChagodoscha2015 NONE)
+PROJECT(StoryVepsianChronicle NONE)
 FIND_PACKAGE(LATEX)
+SET(PDFLATEX_COMPILER xelatex)
+SET(LATEX_DEFAULT_BUILD pdf)
 INCLUDE(UseLATEX.cmake)
 SET(parts
-    introduce.tex
+    titlepage.tex
     annotation.tex
-    chapter1.tex
-    chapter2.tex
-    chapter3.tex
-    chapter4.tex
-    chapter5.tex
-    chapter6.tex
-    chapter7.tex
-    chapter8.tex
-    chapter9.tex
-    chapter10.tex
-    chapter11.tex
-    chapter12.tex
-    chapter13.tex
-    chapter14.tex
-    chapter15.tex
+    #
+	лидь2015/часть1.tex
+    лидь2015/аннотация.tex
+    лидь2015/введение.tex
+    лидь2015/несколько_слов_о_сплавах.tex
+    лидь2015/байдарка.tex 
+    лидь2015/маршрут_и_сборы.tex 
+    лидь2015/отъезд.tex
+    лидь2015/заброска.tex
+    лидь2015/катастрофа.tex
+    лидь2015/фонтан.tex
+    лидь2015/первая_дневка.tex
+    лидь2015/дозаправка_в_чагоде.tex
+    лидь2015/долгий_переход.tex
+    лидь2015/кабаны_и_удача.tex
+    лидь2015/вторая_дневка.tex
+    лидь2015/досрочный_антистапель.tex
+    лидь2015/возвращение.tex
+    лидь2015/заключение.tex
+    #
+    горюн2016/часть2.tex
+    горюн2016/аннотация.tex
+    горюн2016/введение.tex
+    горюн2016/снова_на_реку.tex 
+    горюн2016/команда.tex 
+    горюн2016/приготовления.tex 
+    горюн2016/заброска_микроавтобусом.tex 
+    горюн2016/стапель.tex 
+    горюн2016/проходим_устье_лиди.tex 
+    горюн2016/в_чагоде_год_спустя.tex 
+    горюн2016/в_ожидании_дневки.tex 
+    горюн2016/пятый_дневной_переход.tex
+    горюн2016/поиски_дневки.tex
+    горюн2016/урочище_лукобор.tex
+    горюн2016/целый_день_дождь.tex
+    горюн2016/выброска.tex
+    горюн2016/заключение.tex
+    #
+    лидь2017/часть3.tex
+    лидь2017/аннотация.tex
+    лидь2017/введение.tex
 )
-ADD_LATEX_DOCUMENT(main.tex
-#    INPUTS ${parts}    
+ADD_LATEX_DOCUMENT(
+	main.tex
+	BIBFILES bibliography.bib
+    INPUTS ${parts}    
 )
-#add_custom_command(
-#        TARGET main
-#        COMMAND ${CMAKE_COMMAND} -E copy
-#                ${CMAKE_CURRENT_SOURCE_DIR}/build/main.pdf
-#                ${CMAKE_CURRENT_SOURCE_DIR}/output/Повесть_о_сплаве_на_байдарке_Лидь_2015_Соболев_А_А.pdf)
+# Команда копирует результирующий файл main.pdf в директорию /output с переименованием
+add_custom_command(
+        TARGET main
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_SOURCE_DIR}/build/main.pdf
+                ${CMAKE_CURRENT_SOURCE_DIR}/output/Вепсская_Летопись_Повести_о_сплавах.pdf)
