@@ -1,36 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \file       main.tex
+% \brief      Главный файл настроек TeX проекта
+% \date       24.08.22 - создан
+% \author     Соболев А.А.
+% \details    Для сборки в TexStudio - выбрать компилятор xelatex в настройках проекта
+%             Для сборки при помощи CMake - mkdir build && cd build && cmake .. && make	
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[headings=chapterprefix,a5paper]{book}
 \usepackage{tikz}
 \usepackage{tocloft}
-\usepackage{auto-pst-pdf} 
 \usepackage{pgfornament}
 \usepackage{amsmath}
 \usepackage{gensymb} % Для знака градуса
-\usepackage{flexisym} % Для знака минуты
+\usepackage{cite}
+\usepackage{pstricks}
+\usepackage{psvectorian}
+\usepackage{fontspec}
+\usepackage[russian]{babel}
 
 \newcommand\MyVarAuthorName{А.А.~Соболев}
 \newcommand\MyVarBookName{Вепсская летопись}
 
-\usepackage{pstricks}
-\usepackage{psvectorian}
+\setmainfont[%
+ItalicFont=NewCM10-Italic.otf,%
+BoldFont=NewCM10-Bold.otf,%
+BoldItalicFont=NewCM10-BoldItalic.otf,%
+SmallCapsFeatures={Numbers=OldStyle}]{NewCM10-Regular.otf}
 
-%Russian-specific packages
+\setsansfont[%
+ItalicFont=NewCMSans10-Oblique.otf,%
+BoldFont=NewCMSans10-Bold.otf,%
+BoldItalicFont=NewCMSans10-BoldOblique.otf,%
+SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
+
+\setmonofont[ItalicFont=NewCMMono10-Italic.otf,%
+BoldFont=NewCMMono10-Bold.otf,%
+BoldItalicFont=NewCMMono10-BoldOblique.otf,%
+SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+
 %--------------------------------------
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
-%--------------------------------------
-
-\usepackage{cmap}
-%\usepackage[backend=biber]{biblatex}
-
 % эпиграф
 \usepackage{epigraph}
 \setlength{\epigraphwidth}{0.65\textwidth}
 \renewcommand{\textflush}{flushleft} \renewcommand{\sourceflush}{flushleft}
 \let\originalepigraph\epigraph 
 \renewcommand\epigraph[2]{\originalepigraph{\textit{#1}}{\scriptsize{#2}}} %\textsc
-
-%\addbibresource{bibliography.bib}
 %------------------------------------------------------------------------------------------------------------
 %настройки для А4
 %\usepackage[12pt]{extsizes}
@@ -98,29 +114,39 @@
 \usepackage{fancyhdr}
 \pagestyle{fancyplain}
 
-\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+% Сделаем печать названия Части на левой странице
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+	\ifx\\#1\\% optional argument not present?
+	\origpart{#2}%
+	\renewcommand*\parttitle{Часть \thepart.\ #2}%
+	\else
+	\origpart[#1]{#2}%
+	\renewcommand*\parttitle{#1}%
+	\fi
+}
+
+\fancyhead[LE]{\fancyplain{}{\bfseries \parttitle}}
 \fancyhead[CE]{\fancyplain{}{}}
 \fancyhead[RE]{\fancyplain{}{}}
 
-\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[LO]{\fancyplain{}{}}
 \fancyhead[CO]{\fancyplain{}{}}
-\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[RO]{\fancyplain{}{\bfseries \rightmark}}
 
-\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[LE]{\fancyplain{}{\bfseries \thepage}}
 \fancyfoot[CE]{\fancyplain{}{}}
 \fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize \MyVarBookName}}
 
 \fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize \MyVarAuthorName }}
 \fancyfoot[CO]{\fancyplain{}{}}
-\fancyfoot[RO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{\bfseries \thepage}}
 
 \renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\chaptermark}[1]{%
-	\markboth{#1}{}%
-}
-\renewcommand{\chaptermark}[1]{\markright{Часть \thepart.\ \chaptername\ \thechapter.\ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markright{Часть \thepart.\ \chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\chaptermark}[1]{\markright{\chaptername\ \thechapter.\ #1}{}}
 
-%\usepackage{tikz}
 \newcommand\blankpage{% Пустая страница
 	\null
 	\thispagestyle{empty}%
@@ -192,7 +218,7 @@
 	\vspace{2.8cm}	
 	
 	%\greenline
-\uzor
+	\uzor
 	
 	\begin{center}
 		\Huge \textbf {ВЕПССКАЯ\\ЛЕТОПИСЬ}
@@ -232,7 +258,7 @@
 \include{part1_introduce}
 \blankpage
 \include{part1_chapter1} 
-%\include{part1_chapter2} 
+\include{part1_chapter2} 
 %\include{part1_chapter3} 
 %\include{part1_chapter4}
 %\include{part1_chapter5}
@@ -287,8 +313,7 @@
 %\include{part3_chapter9}
 %\include{part3_chapter10}
 %
-\bibliographystyle{abbrv}
+\bibliographystyle{plain}
 \bibliography{bibliography}
-%\printbibliography
 }
 \end{document}
