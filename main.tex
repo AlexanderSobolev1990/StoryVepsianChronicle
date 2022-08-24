@@ -19,6 +19,7 @@
 \usepackage{psvectorian}
 \usepackage{fontspec}
 \usepackage[russian]{babel}
+\usepackage{afterpage}
 
 \newcommand\MyVarAuthorName{А.А.~Соболев}
 \newcommand\MyVarBookName{Вепсская летопись}
@@ -147,11 +148,12 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\renewcommand{\chaptermark}[1]{\markright{Часть \thepart.\ \chaptername\ \thechapter.\ #1}{}}
 \renewcommand{\chaptermark}[1]{\markright{\chaptername\ \thechapter.\ #1}{}}
 
-\newcommand\blankpage{% Пустая страница
-	\null
+% Пустая страница
+\newcommand\blankpage{%
+	\null%
 	\thispagestyle{empty}%
-	\newpage
-}
+	\newpage%
+}%
 
 \newcommand{\sdash}{\nobreakdash-}  % Дефис неразрывный без пробелов до и после
 \newcommand{\ndash}{\nobreakdash~--~}  % Короткое тире неразрывное с пробелами до и после
@@ -199,119 +201,82 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 
 \begin{document}
 
+\relpenalty=10000
+\binoppenalty=10000
 \clubpenalty=10000  % Это костыль против
 \widowpenalty=10000 % "висячих" строк
-
 \righthyphenmin=200 % Избавляемся
-{\sloppy			% от переносов слов
-%\begin{titlepage}
-%\author{\MyVarAuthorName}
-%\title{\MyVarBookName}
-%\date{2006\\Москва\\Самиздат}
-%\maketitle
-%\end{titlepage}
-\begin{titlepage}
-	\newpage
-	\begin{center}
-		\huge \textbf \MyVarAuthorName
-	\end{center}	
-	\vspace{2.8cm}	
-	
-	%\greenline
-	\uzor
-	
-	\begin{center}
-		\Huge \textbf {ВЕПССКАЯ\\ЛЕТОПИСЬ}
-	\end{center}	
-	\vspace{0.0cm}
-
-%	\greenline
-	\uzor
-
-	\begin{center}
-		\small {СБОРНИК ПОВЕСТЕЙ О СПЛАВАХ НА БАЙДАРКЕ\\ПО РЕКАМ ГОРЮН, ЛИДЬ, ЧАГОДА, ЧАГОДОЩА, ПЕСЬ}
-	\end{center}
-
-%	\greenline
-	\uzor
-		
-	\vspace{\fill}	
-	\begin{center}
-		\normalsize
-		Москва \linebreak 
-		2022 \linebreak
-		Самиздат
-	\end{center}	
-\end{titlepage}
-\include{annotation} % Аннотация
-%\blankpage
-%\include{introduce}
-\blankpage
+{\sloppy	        % от переносов слов
+\input{titlepage} % Обложка
+\afterpage{\blankpage}
+\input{annotation} % Аннотация глобально к сборнику
+\afterpage{\blankpage}
 \tableofcontents
-\blankpage
+\afterpage{\blankpage}
 %
 % ЧАСТЬ 1 - ЛИДЬ 2015
 %
-\include{part1}
-\include{part1_annotation} % Аннотация
-\blankpage
-\include{part1_introduce}
-\blankpage
-\include{part1_chapter1} 
-\include{part1_chapter2} 
-%\include{part1_chapter3} 
-%\include{part1_chapter4}
-%\include{part1_chapter5}
-%\include{part1_chapter6}
-%\include{part1_chapter7}
-%\include{part1_chapter8}
-%\include{part1_chapter9}
-%\include{part1_chapter10}
-%\include{part1_chapter11}
-%\include{part1_chapter12}
-%\include{part1_chapter13}
-%\include{part1_chapter14}
-%\include{part1_chapter15}
+\input{лидь2015/часть1}
+\input{лидь2015/аннотация}
+\afterpage{\blankpage}
+\input{лидь2015/введение}
+\afterpage{\blankpage}
+\input{лидь2015/несколько_слов_о_сплавах} 
+\input{лидь2015/байдарка} 
+\input{лидь2015/маршрут_и_сборы} 
+\input{лидь2015/отъезд}
+\input{лидь2015/заброска}
+\input{лидь2015/катастрофа}
+\input{лидь2015/фонтан}
+\input{лидь2015/первая_дневка}
+\input{лидь2015/дозаправка_в_чагоде}
+\input{лидь2015/долгий_переход}
+\input{лидь2015/кабаны_и_удача}
+\input{лидь2015/вторая_дневка}
+\input{лидь2015/досрочный_антистапель}
+\input{лидь2015/возвращение}
+\input{лидь2015/заключение}
 %
 % ЧАСТЬ 2 - ГОРЮН 2016
 %
-%\include{part2}
-%\include{part2_annotation} % Аннотация
-%\blankpage
-%\include{part2_introduce}
-%\blankpage
-%\include{part2_chapter1} 
-%\include{part2_chapter2} 
-%\include{part2_chapter3} 
-%\include{part2_chapter4} 
-%\include{part2_chapter5} 
-%\include{part2_chapter6} 
-%\include{part2_chapter7} 
-%\include{part2_chapter8} 
-%\include{part2_chapter9}
-%\include{part2_chapter10}
-%\include{part2_chapter11}
-%\include{part2_chapter12}
-%\include{part2_chapter13}
-%\include{part2_chapter14}
+\afterpage{\blankpage}
+\input{горюн2016/часть2}
+\input{горюн2016/аннотация}
+\afterpage{\blankpage}
+\input{горюн2016/введение}
+\afterpage{\blankpage}
+\input{горюн2016/снова_на_реку} 
+\input{горюн2016/команда} 
+\input{горюн2016/приготовления} 
+\input{горюн2016/заброска_микроавтобусом} 
+\input{горюн2016/стапель} 
+\input{горюн2016/проходим_устье_лиди} 
+\input{горюн2016/в_чагоде_год_спустя} 
+\input{горюн2016/в_ожидании_дневки} 
+\input{горюн2016/пятый_дневной_переход}
+\input{горюн2016/поиски_дневки}
+\input{горюн2016/урочище_лукобор}
+\input{горюн2016/целый_день_дождь}
+\input{горюн2016/выброска}
+\input{горюн2016/заключение}
 %
 % ЧАСТЬ 3 - ЛИДЬ 2017
 %
-%\include{part3}
-%\include{part3_annotation} % Аннотация
-%\blankpage
-%\include{part3_introduce}
-%\blankpage
-%\include{part3_chapter1}
-%\include{part3_chapter2}
-%\include{part3_chapter3}
-%\include{part3_chapter4}
-%\include{part3_chapter5}
-%\include{part3_chapter6}
-%\include{part3_chapter7}
-%\include{part3_chapter8}
-%\include{part3_chapter9}
-%\include{part3_chapter10}
+\input{лидь2017/часть3}
+\input{лидь2017/аннотация}
+\afterpage{\blankpage}
+\input{лидь2017/введение}
+\afterpage{\blankpage}
+%\input{лидь2017/а_не_пошло_бы_все}
+%\input{лидь2017/авантюра}
+%\input{лидь2017/автозаброска}
+%\input{лидь2017/радогощь}
+%\input{лидь2017/гэс}
+%\input{лидь2017/село_лидь}
+%\input{лидь2017/дозаправка}
+%\input{лидь2017/забелье}
+%\input{лидь2017/третий_раз}
+%\input{лидь2017/тургощь}
 %
 \bibliographystyle{plain}
 \bibliography{bibliography}
