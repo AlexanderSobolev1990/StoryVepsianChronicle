@@ -20,9 +20,15 @@
 \usepackage{fontspec}
 \usepackage[russian]{babel}
 \usepackage{afterpage}
+\usepackage{graphicx}
+\graphicspath{ {./pictures/} }
+%\usepackage{courier}
+\usepackage[pages=some]{background}
 
 \newcommand\MyVarAuthorName{А.А.~Соболев}
 \newcommand\MyVarBookName{Вепсская летопись}
+%\newcommand\MyVarAuthorName{Автор}
+%\newcommand\MyVarBookName{Название}
 
 \setmainfont[%
 ItalicFont=NewCM10-Italic.otf,%
@@ -36,7 +42,8 @@ BoldFont=NewCMSans10-Bold.otf,%
 BoldItalicFont=NewCMSans10-BoldOblique.otf,%
 SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
 
-\setmonofont[ItalicFont=NewCMMono10-Italic.otf,%
+%\setmonofont[ItalicFont=NewCMMono10-Italic.otf,%
+\newfontfamily{\monofont}[ItalicFont=NewCMMono10-Italic.otf,%
 BoldFont=NewCMMono10-Bold.otf,%
 BoldItalicFont=NewCMMono10-BoldOblique.otf,%
 SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
@@ -198,6 +205,17 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 
 \renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Фон
+\backgroundsetup{
+	scale=0.75,
+	color=black,
+	opacity=0.5,
+	angle=-1,
+	contents={%
+%		\includegraphics[width=\paperwidth,height=\paperheight]{len}
+		\includegraphics{len}
+	}%
+}
 
 \begin{document}
 
@@ -207,7 +225,7 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \widowpenalty=10000 % "висячих" строк
 \righthyphenmin=200 % Избавляемся
 {\sloppy	        % от переносов слов
-\input{titlepage} % Обложка
+\input{titlepage}   % Обложка
 \afterpage{\blankpage}
 \input{annotation} % Аннотация глобально к сборнику
 \afterpage{\blankpage}
@@ -239,34 +257,34 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %
 % ЧАСТЬ 2 - ГОРЮН 2016
 %
-\afterpage{\blankpage}
-\input{горюн2016/часть2}
-\input{горюн2016/аннотация}
-\afterpage{\blankpage}
-\input{горюн2016/введение}
-\afterpage{\blankpage}
-\input{горюн2016/снова_на_реку} 
-\input{горюн2016/команда} 
-\input{горюн2016/приготовления} 
-\input{горюн2016/заброска_микроавтобусом} 
-\input{горюн2016/стапель} 
-\input{горюн2016/проходим_устье_лиди} 
-\input{горюн2016/в_чагоде_год_спустя} 
-\input{горюн2016/в_ожидании_дневки} 
-\input{горюн2016/пятый_дневной_переход}
-\input{горюн2016/поиски_дневки}
-\input{горюн2016/урочище_лукобор}
-\input{горюн2016/целый_день_дождь}
-\input{горюн2016/выброска}
-\input{горюн2016/заключение}
+%\afterpage{\blankpage}
+%\input{горюн2016/часть2}
+%\input{горюн2016/аннотация}
+%\afterpage{\blankpage}
+%\input{горюн2016/введение}
+%\afterpage{\blankpage}
+%\input{горюн2016/снова_на_реку} 
+%\input{горюн2016/команда} 
+%\input{горюн2016/приготовления} 
+%\input{горюн2016/заброска_микроавтобусом} 
+%\input{горюн2016/стапель} 
+%\input{горюн2016/проходим_устье_лиди} 
+%\input{горюн2016/в_чагоде_год_спустя} 
+%\input{горюн2016/в_ожидании_дневки} 
+%\input{горюн2016/пятый_дневной_переход}
+%\input{горюн2016/поиски_дневки}
+%\input{горюн2016/урочище_лукобор}
+%\input{горюн2016/целый_день_дождь}
+%\input{горюн2016/выброска}
+%\input{горюн2016/заключение}
 %
 % ЧАСТЬ 3 - ЛИДЬ 2017
 %
-\input{лидь2017/часть3}
-\input{лидь2017/аннотация}
-\afterpage{\blankpage}
-\input{лидь2017/введение}
-\afterpage{\blankpage}
+%\input{лидь2017/часть3}
+%\input{лидь2017/аннотация}
+%\afterpage{\blankpage}
+%\input{лидь2017/введение}
+%\afterpage{\blankpage}
 %\input{лидь2017/а_не_пошло_бы_все}
 %\input{лидь2017/авантюра}
 %\input{лидь2017/автозаброска}
@@ -278,7 +296,7 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\input{лидь2017/третий_раз}
 %\input{лидь2017/тургощь}
 %
-\bibliographystyle{plain}
+\bibliographystyle{apalike}%{plain}%{alpha}%
 \bibliography{bibliography}
 }
 \end{document}
