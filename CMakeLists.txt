@@ -52,6 +52,7 @@ SET(parts
 ADD_LATEX_DOCUMENT(
 	main.tex
 	BIBFILES bibliography.bib
+	IMAGE_DIRS pictures
     INPUTS ${parts}    
 )
 # Команда копирует результирующий файл main.pdf в директорию /output с переименованием
