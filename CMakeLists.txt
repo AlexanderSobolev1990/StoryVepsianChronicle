@@ -6,9 +6,10 @@ SET(LATEX_DEFAULT_BUILD pdf)
 INCLUDE(UseLATEX.cmake)
 SET(parts
     titlepage.tex
+    typograph.tex
     annotation.tex
     #
-	лидь2015/часть1.tex
+    лидь2015/часть1.tex
     лидь2015/аннотация.tex
     лидь2015/введение.tex
     лидь2015/несколько_слов_о_сплавах.tex
@@ -48,6 +49,8 @@ SET(parts
     лидь2017/часть3.tex
     лидь2017/аннотация.tex
     лидь2017/введение.tex
+    #
+    lastpage.tex
 )
 ADD_LATEX_DOCUMENT(
 	main.tex

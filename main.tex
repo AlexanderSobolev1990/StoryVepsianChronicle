@@ -8,7 +8,13 @@
 %             Для сборки при помощи CMake - mkdir build && cd build && cmake .. && make	
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listfiles
 \documentclass[headings=chapterprefix,a5paper]{book}
+\usepackage[monochrome]{color}
+\usepackage[12pt]{extsizes}
+\usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm]{geometry}
+\linespread{1.0} % по умолчанию 1.0
+%
 \usepackage{tikz}
 \usepackage{tocloft}
 \usepackage{pgfornament}
@@ -18,17 +24,26 @@
 \usepackage{pstricks}
 \usepackage{psvectorian}
 \usepackage{fontspec}
+\usepackage{pdfpages}
 \usepackage[russian]{babel}
-\usepackage{afterpage}
-\usepackage{graphicx}
+%\usepackage[page,toc,titletoc,title]{appendix}
+
+%\usepackage{afterpage}
+%\usepackage{graphicx}
 \graphicspath{ {./pictures/} }
 %\usepackage{courier}
 \usepackage[pages=some]{background}
 
 \newcommand\MyVarAuthorName{А.А.~Соболев}
 \newcommand\MyVarBookName{Вепсская летопись}
+\newcommand\MyVarBookNamesec{Сборник повестей о сплавах на байдарке}
 %\newcommand\MyVarAuthorName{Автор}
 %\newcommand\MyVarBookName{Название}
+
+\newcommand{\UDK}{0000}%{821.161.1}
+\newcommand{\BBK}{0000}%{84 (2Рос-Рус) 6}
+\newcommand{\BibCode}{C00}%{C54}
+\newcommand{\ISBN}{ISBN 0000-0000-0000-0000}%{ISBN 978-5-6048796-4-1}
 
 \setmainfont[%
 ItalicFont=NewCM10-Italic.otf,%
@@ -48,6 +63,12 @@ BoldFont=NewCMMono10-Bold.otf,%
 BoldItalicFont=NewCMMono10-BoldOblique.otf,%
 SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 
+\usepackage{afterpage}
+%\usepackage[x-1a3]{pdfx} % Вызывает невозможность собирать в texstudio!
+\usepackage{ctable}
+\usepackage{longtable}
+\usepackage{graphicx}
+%\graphicspath{ {./images/} }
 %--------------------------------------
 % эпиграф
 \usepackage{epigraph}
@@ -62,9 +83,9 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\linespread{1.15} % по умолчанию 1.0
 %------------------------------------------------------------------------------------------------------------
 %настройки для А5
-\usepackage[11pt]{extsizes}
-\usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm]{geometry}
-\linespread{1.0} % по умолчанию 1.0
+%\usepackage[11pt]{extsizes}
+%\usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm]{geometry}
+%\linespread{1.0} % по умолчанию 1.0
 %------------------------------------------------------------------------------------------------------------
 %настройки для А4
 %\newcommand{\corner}[1]{%
@@ -217,6 +238,50 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 	}%
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\def\wordattachment{Приложение}
+%
+%\def\writeattachmentnonum#1#2#3{
+%	\refstepcounter{attachment}
+%	\hfill{\MakeUppercase{\wordattachment}}\vspace{-3mm} \\
+%	\null\hfill{#1}\vspace{3mm} \\
+%	{
+%%		\attachmentsize\centering\MakeUppercase{#2}\par
+%		\normalsize\centering\MakeUppercase{#2}\par
+%	}
+%	\addcontentsline{toc}{attachment}{\wordattachment.~#2}
+%	\ifx&#3&\else
+%	\label{#3}
+%	\fi
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Вставляет приложение
+%% \attachment{description}{title}[label]
+%\def\attachment#1#2{
+%	\@ifnextchar[
+%	{\attachment@i{#1}{#2}}
+%	{\attachment@i{#1}{#2}[]}
+%}
+%
+%\def\attachment@i#1#2[#3]{
+%	\newpage
+%%	\ifnum\getnum{lastattachment}=1
+%	\writeattachmentnonum{#1}{#2}{#3}
+%%	\else
+%%	\writeattachmentnum{#1}{#2}{#3}
+%%	\fi
+%}
+%\usepackage{titlesec}
+%\renewcommand{\thesection}{\Asbuk{section}}
+%\newcommand{\intro}[1]{
+%	\stepcounter{section}
+%	\section*{\hfillПРИЛОЖЕНИЕ \arabic{section}}
+%	\begin{center}
+%		\bf{#1}
+%	\end{center}
+%%	\markboth{\MakeUppercase{#1}}{}
+%%	\addcontentsline{toc}{chapter}{Приложение \arabic{section}. #1}
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \relpenalty=10000
@@ -226,34 +291,50 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \righthyphenmin=200 % Избавляемся
 {\sloppy	        % от переносов слов
 \input{titlepage}   % Обложка
-\afterpage{\blankpage}
+\input{typograph}
 \input{annotation} % Аннотация глобально к сборнику
-\afterpage{\blankpage}
+%\afterpage{\blankpage}
+%\tableofcontents
+% Замена \blankpage в данном случае:
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+%
+{
+%\setlength{\cftbeforetoctitleskip}{1.5cm}%чтобы влезло на 1 страницу 11 шрифт
+\setlength{\cftbeforetoctitleskip}{0.5cm}%чтобы влезло на 1 страницу 12 шрифт
 \tableofcontents
+}
+%\afterpage{\blankpage}
+%\afterpage{\blankpage}
+\input{thankyou}
 \afterpage{\blankpage}
+\input{лидь2015/введение}
+%\afterpage{\blankpage}
 %
 % ЧАСТЬ 1 - ЛИДЬ 2015
 %
 \input{лидь2015/часть1}
 \input{лидь2015/аннотация}
-\afterpage{\blankpage}
-\input{лидь2015/введение}
+%\afterpage{\blankpage}
+%\input{лидь2015/введение}
 \afterpage{\blankpage}
 \input{лидь2015/несколько_слов_о_сплавах} 
 \input{лидь2015/байдарка} 
-\input{лидь2015/маршрут_и_сборы} 
-\input{лидь2015/отъезд}
-\input{лидь2015/заброска}
-\input{лидь2015/катастрофа}
-\input{лидь2015/фонтан}
-\input{лидь2015/первая_дневка}
-\input{лидь2015/дозаправка_в_чагоде}
-\input{лидь2015/долгий_переход}
-\input{лидь2015/кабаны_и_удача}
-\input{лидь2015/вторая_дневка}
-\input{лидь2015/досрочный_антистапель}
-\input{лидь2015/возвращение}
-\input{лидь2015/заключение}
+%\input{лидь2015/маршрут_и_сборы} 
+%\input{лидь2015/отъезд}
+%\input{лидь2015/заброска}
+%\input{лидь2015/катастрофа}
+%\input{лидь2015/фонтан}
+%\input{лидь2015/первая_дневка}
+%\input{лидь2015/дозаправка_в_чагоде}
+%\input{лидь2015/долгий_переход}
+%\input{лидь2015/кабаны_и_удача}
+%\input{лидь2015/вторая_дневка}
+%\input{лидь2015/досрочный_антистапель}
+%\input{лидь2015/возвращение}
+%\input{лидь2015/заключение}
 %
 % ЧАСТЬ 2 - ГОРЮН 2016
 %
@@ -261,22 +342,22 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \input{горюн2016/часть2}
 \input{горюн2016/аннотация}
 \afterpage{\blankpage}
-\input{горюн2016/введение}
-\afterpage{\blankpage}
+%\input{горюн2016/введение}
+%\afterpage{\blankpage}
 \input{горюн2016/снова_на_реку} 
-\input{горюн2016/команда} 
-\input{горюн2016/приготовления} 
-\input{горюн2016/заброска_микроавтобусом} 
-\input{горюн2016/стапель} 
-\input{горюн2016/проходим_устье_лиди} 
-\input{горюн2016/в_чагоде_год_спустя} 
-\input{горюн2016/в_ожидании_дневки} 
-\input{горюн2016/пятый_дневной_переход}
-\input{горюн2016/поиски_дневки}
-\input{горюн2016/урочище_лукобор}
-\input{горюн2016/целый_день_дождь}
-\input{горюн2016/выброска}
-\input{горюн2016/заключение}
+%\input{горюн2016/команда} 
+%\input{горюн2016/приготовления} 
+%\input{горюн2016/заброска_микроавтобусом} 
+%\input{горюн2016/стапель} 
+%\input{горюн2016/проходим_устье_лиди} 
+%\input{горюн2016/в_чагоде_год_спустя} 
+%\input{горюн2016/в_ожидании_дневки} 
+%\input{горюн2016/пятый_дневной_переход}
+%\input{горюн2016/поиски_дневки}
+%\input{горюн2016/урочище_лукобор}
+%\input{горюн2016/целый_день_дождь}
+%\input{горюн2016/выброска}
+%\input{горюн2016/заключение}
 %
 % ЧАСТЬ 3 - ЛИДЬ 2017
 %
@@ -293,10 +374,15 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\input{лидь2017/село_лидь}
 %\input{лидь2017/дозаправка}
 %\input{лидь2017/забелье}
-%\input{лидь2017/третий_раз}
 %\input{лидь2017/тургощь}
+%\input{лидь2017/третий_раз}
+%
+% ПРИЛОЖЕНИЯ
+%
+\input{coordinates}
 %
 \bibliographystyle{apalike}%{plain}%{alpha}%
 \bibliography{bibliography}
+\input{lastpage}
 }
 \end{document}
