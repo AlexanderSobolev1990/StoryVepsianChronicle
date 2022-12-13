@@ -15,6 +15,7 @@
 \usepackage[left=1.5cm,right=1.5cm,top=2.0cm,bottom=2.0cm]{geometry}
 \linespread{1.0} % по умолчанию 1.0
 %
+\usepackage{lastpage}
 \usepackage{tikz}
 \usepackage{tocloft}
 \usepackage{pgfornament}
@@ -282,8 +283,11 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %%	\markboth{\MakeUppercase{#1}}{}
 %%	\addcontentsline{toc}{chapter}{Приложение \arabic{section}. #1}
 %}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\input{coordsvalues}
 
 \relpenalty=10000
 \binoppenalty=10000

@@ -5,6 +5,7 @@ SET(PDFLATEX_COMPILER xelatex)
 SET(LATEX_DEFAULT_BUILD pdf)
 INCLUDE(UseLATEX.cmake)
 SET(parts
+    coordsvalues.tex
     titlepage.tex
     thankyou.tex
     typograph.tex
