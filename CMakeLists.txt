@@ -80,4 +80,4 @@ add_custom_command(
         TARGET main
         COMMAND ${CMAKE_COMMAND} -E copy
                 ${CMAKE_CURRENT_SOURCE_DIR}/build/main.pdf
-                ${CMAKE_CURRENT_SOURCE_DIR}/output/Вепсская_Летопись_Повести_о_сплавах.pdf)
+                ${CMAKE_CURRENT_SOURCE_DIR}/output/StoryVepsianChronicle_Sobolev.pdf)
