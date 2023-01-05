@@ -20,7 +20,8 @@
 \usepackage{tocloft}
 \usepackage{pgfornament}
 \usepackage{amsmath}
-\usepackage{gensymb} % Для знака градуса
+\usepackage{gensymb} % Для знака градусаo.ttf}							
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{cite}
 \usepackage{pstricks}
 \usepackage{psvectorian}
@@ -63,6 +64,13 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMSans10-Regular.otf}
 BoldFont=NewCMMono10-Bold.otf,%
 BoldItalicFont=NewCMMono10-BoldOblique.otf,%
 SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
+
+% Adjust sectional unit title fonts in ToC
+%\renewcommand{\cftpartfont}{RunicAltNo}
+%\renewcommand{\cftpartfont}{%
+%%	\fontsize{11}{13}\usefont{runicaltno}{phv}{bc}{n}\selectfont
+%	\fontsize{11}{13}\usefont{T2C}{runicaltno}{bc}{n}\selectfont
+%}
 
 \usepackage{afterpage}
 %\usepackage[x-1a3]{pdfx} % Вызывает невозможность собирать в texstudio!
@@ -227,10 +235,7 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\renewcommand\cftchapafterpnum{\vskip 0em} % for spacing after each entry
 \AtBeginDocument{\addtolength\cftchapnumwidth{\widthof{\bfseries ~~Глава~~ }}}
 
-\renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter
-
-% Adjust sectional unit title fonts in ToC
-\renewcommand{\cftpartfont}{\sffamily}
+\renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter							
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Фон
 \backgroundsetup{
