@@ -228,6 +228,9 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \AtBeginDocument{\addtolength\cftchapnumwidth{\widthof{\bfseries ~~Глава~~ }}}
 
 \renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter
+
+% Adjust sectional unit title fonts in ToC
+\renewcommand{\cftpartfont}{\sffamily}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Фон
 \backgroundsetup{
@@ -382,6 +385,16 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \input{лидь2017/забелье}
 \input{лидь2017/тургощь}
 \input{лидь2017/третий_раз}
+\input{лидь2017/антистапель}
+\input{лидь2017/автовыброска}
+\input{лидь2017/заключение}
+%
+% ЧАСТЬ 4 - ПЕСЬ 2018
+%
+\input{песь2018/часть4}
+%\input{песь2018/аннотация}
+\afterpage{\blankpage}
+\input{песь2018/раскрась_это_черным}
 %
 % ПРИЛОЖЕНИЯ
 %
