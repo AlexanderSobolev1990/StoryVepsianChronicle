@@ -237,6 +237,15 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 
 \renewcommand\cftchapdotsep{\cftdotsep} % Добавление точечек к элементу chapter							
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Шрифт главы и секции
+%\usepackage{titlesec}
+%\titleformat{\chapter}[display]
+%{\fontspec{NorseRus}\huge}
+%{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+%\titleformat{\section}
+%{\fontspec{NorseRus}\Large}
+%{\thesection}{1em}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Фон
 \backgroundsetup{
 	scale=0.75,
@@ -325,8 +334,9 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\afterpage{\blankpage}
 %
 % БЛАГОДАРНОСТИ 
+%\afterpage{\blankpage}
 \input{thankyou}
-\afterpage{\blankpage}
+%\afterpage{\blankpage}
 %
 % ПРОЛОГ
 \input{prolog}
