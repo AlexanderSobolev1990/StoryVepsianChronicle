@@ -317,13 +317,21 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %
 {
 %\setlength{\cftbeforetoctitleskip}{1.5cm}%чтобы влезло на 1 страницу 11 шрифт
-\setlength{\cftbeforetoctitleskip}{0.5cm}%чтобы влезло на 1 страницу 12 шрифт
+%\setlength{\cftbeforetoctitleskip}{0.5cm}%чтобы влезло на 1 страницу 12 шрифт
+\setlength{\cftbeforetoctitleskip}{0cm}%чтобы влезло на 1 страницу 12 шрифт c прологом
 \tableofcontents
 }
 %\afterpage{\blankpage}
 %\afterpage{\blankpage}
+%
+% БЛАГОДАРНОСТИ 
 \input{thankyou}
 \afterpage{\blankpage}
+%
+% ПРОЛОГ
+\input{prolog}
+\afterpage{\blankpage}
+%
 \input{лидь2015/введение}
 %\afterpage{\blankpage}
 %
@@ -400,6 +408,16 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \input{песь2018/аннотация}
 \afterpage{\blankpage}
 \input{песь2018/раскрась_это_черным}
+%
+% ЧАСТЬ 5 - ЧАГОДОЩА 2019
+%
+\input{чагодоща2019/часть5}
+\input{чагодоща2019/аннотация}
+\afterpage{\blankpage}
+\input{чагодоща2019/cold_as_ice}
+%
+% ЭПИЛОГ
+\input{epilog}
 %
 % ПРИЛОЖЕНИЯ
 %
