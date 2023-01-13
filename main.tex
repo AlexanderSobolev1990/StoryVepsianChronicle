@@ -77,6 +77,9 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \usepackage{ctable}
 \usepackage{longtable}
 \usepackage{graphicx}
+%\usepackage{textpos}
+%\usepackage{wrapfig}
+%\usepackage{floatflt}
 %\graphicspath{ {./images/} }
 %--------------------------------------
 % эпиграф
@@ -111,6 +114,50 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 		\pgfornament[width=2.2cm]{#1}};
 	\end{tikzpicture}%
 }
+
+%\newcommand{\vepsianrose}{%
+%	\begin{tikzpicture}[remember picture, overlay]
+%	\node[anchor=north east, shift={(-1.5cm,-4.2cm)}] at (current page.north east){%
+%		\includegraphics{veps1.svg}};
+%	\end{tikzpicture}%
+%}
+
+%\newcommand{\vepsianrose}{%
+%	\begin{figure}[h]
+%		\includegraphics[scale=0.14]{vepsp}
+%	\end{figure}
+%}
+
+%\newcommand{\vepsianrose}{%
+%	\begin{tikzpicture}
+%	\node[anchor=north east, shift={(-1.5cm,-4.2cm)}] at (current page.north east){%
+%		\includegraphics[scale=0.14]{vepsp}%
+%	}%
+%	\end{tikzpicture}
+%}
+
+%\newcommand{\vepsianrose}{%
+%\begin{figure}[h!]
+%	\vspace*{-7.5cm}
+%	\hspace*{7.5cm}\includegraphics[scale=0.14]{vepsp}
+%\end{figure}
+%\vspace*{3.5cm}
+%}
+\newcommand{\vepsianrose}{%
+	\begin{figure}[h!]
+		\vspace*{-77mm}
+		\hspace*{8.15cm}\includegraphics[scale=0.12]{vepsrosedr}
+	\end{figure}
+	\vspace*{4.0cm}
+}
+
+
+%\newcommand{\vepsianrose}{%
+%	\begin{tikzpicture}
+%		\includegraphics[scale=0.14]{vepsp}
+%	\end{tikzpicture}
+%}
+
 %------------------------------------------------------------------------------------------------------------
 \usetikzlibrary{celtic}
 \newcommand{\uzor}{%	
