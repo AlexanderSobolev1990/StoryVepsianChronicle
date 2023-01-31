@@ -146,7 +146,9 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \newcommand{\vepsianrose}{%
 	\begin{figure}[h!]
 		\vspace*{-77mm}
-		\hspace*{8.15cm}\includegraphics[scale=0.12]{vepsrosedr}
+%		\hspace*{8.15cm}\includegraphics[scale=0.12]{vepsroser} % Красный
+		\hspace*{8.15cm}\includegraphics[scale=0.12]{vepsrosedr} % Темно-красный
+%		\hspace*{8.15cm}\includegraphics[scale=0.12]{vepsroseb} % Черный
 	\end{figure}
 	\vspace*{4.0cm}
 }
@@ -354,12 +356,12 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \input{coordsvalues}
-
 \relpenalty=10000
 \binoppenalty=10000
 \clubpenalty=10000  % Это костыль против
 \widowpenalty=10000 % "висячих" строк
 \righthyphenmin=200 % Избавляемся
+%\interfootnotelinepenalty=10000
 {\sloppy	        % от переносов слов
 \input{titlepage}   % Обложка
 \input{typograph}
