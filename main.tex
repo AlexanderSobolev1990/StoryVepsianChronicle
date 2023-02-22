@@ -356,6 +356,12 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 %\usepackage{parskip}
+
+\usepackage{titlesec}
+\usepackage[colorlinks=true,linktoc=all]{hyperref} % hyperfootnotes=false - не выделять сноски
+%\usepackage{imakeidx}
+%\makeindex[columns=1,intoc]
+\usepackage{bookmark}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \input{coordsvalues}
@@ -372,63 +378,56 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %\afterpage{\blankpage}
 %\tableofcontents
 % Замена \blankpage в данном случае:
+
 \newpage
+{
 \null
 \thispagestyle{empty}
+}
 \newpage
 %
 {
 %\setlength{\cftbeforetoctitleskip}{1.5cm}%чтобы влезло на 1 страницу 11 шрифт
 %\setlength{\cftbeforetoctitleskip}{0.5cm}%чтобы влезло на 1 страницу 12 шрифт
 \setlength{\cftbeforetoctitleskip}{0cm}%чтобы влезло на 1 страницу 12 шрифт c прологом
+\pdfbookmark[0]{\contentsname}{toc} % Добавлять перед \tableofcontents
 \tableofcontents
 }
-%\afterpage{\blankpage}
-%\afterpage{\blankpage}
 %
 % БЛАГОДАРНОСТИ 
-%\afterpage{\blankpage}
 \input{thankyou}
-%\afterpage{\blankpage}
 %
 % ПРОЛОГ
 \input{prolog}
-%\afterpage{\blankpage}
 %
 \input{лидь2015/введение}
-%\afterpage{\blankpage}
 %
 % ЧАСТЬ 1 - ЛИДЬ 2015
 %
-%\input{лидь2015/часть1}
-%\input{лидь2015/аннотация}
-%%\afterpage{\blankpage}
-%%\input{лидь2015/введение}
-%\afterpage{\blankpage}
-%\input{лидь2015/несколько_слов_о_сплавах} 
-%\input{лидь2015/байдарка} 
-%\input{лидь2015/маршрут_и_сборы} 
-%\input{лидь2015/отъезд}
-%\input{лидь2015/заброска}
-%\input{лидь2015/катастрофа}
-%\input{лидь2015/фонтан}
-%\input{лидь2015/первая_дневка}
-%\input{лидь2015/дозаправка_в_чагоде}
-%\input{лидь2015/долгий_переход}
-%\input{лидь2015/кабаны_и_удача}
-%\input{лидь2015/вторая_дневка}
-%\input{лидь2015/досрочный_антистапель}
-%\input{лидь2015/возвращение}
-%\input{лидь2015/заключение}
+\input{лидь2015/часть1}
+\input{лидь2015/аннотация}
+\afterpage{\blankpage}
+\input{лидь2015/несколько_слов_о_сплавах} 
+\input{лидь2015/байдарка} 
+\input{лидь2015/маршрут_и_сборы} 
+\input{лидь2015/отъезд}
+\input{лидь2015/заброска}
+\input{лидь2015/катастрофа}
+\input{лидь2015/фонтан}
+\input{лидь2015/первая_дневка}
+\input{лидь2015/дозаправка_в_чагоде}
+\input{лидь2015/долгий_переход}
+\input{лидь2015/кабаны_и_удача}
+\input{лидь2015/вторая_дневка}
+\input{лидь2015/досрочный_антистапель}
+\input{лидь2015/возвращение}
+\input{лидь2015/заключение}
 %
 % ЧАСТЬ 2 - ГОРЮН 2016
 %
-\afterpage{\blankpage}
 \input{горюн2016/часть2}
 \input{горюн2016/аннотация}
 \afterpage{\blankpage}
-%\input{горюн2016/введение}
-%\afterpage{\blankpage}
 \input{горюн2016/снова_на_реку} 
 \input{горюн2016/команда} 
 \input{горюн2016/приготовления} 
@@ -441,43 +440,41 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 \input{горюн2016/поиски_дневки}
 \input{горюн2016/урочище_лукобор}
 \input{горюн2016/целый_день_дождь}
-\input{горюн2016/выброска}
+\input{горюн2016/выброска}X
 \input{горюн2016/заключение}
 %
 % ЧАСТЬ 3 - ЛИДЬ 2017
 %
-%\input{лидь2017/часть3}
-%\input{лидь2017/аннотация}
-%\afterpage{\blankpage}
-%%\input{лидь2017/введение}
-%%\afterpage{\blankpage}
-%\input{лидь2017/а_не_пошло_бы_все}
-%\input{лидь2017/авантюра}
-%\input{лидь2017/автозаброска}
-%\input{лидь2017/радогощь}
-%\input{лидь2017/гэс}
-%\input{лидь2017/село_лидь}
-%\input{лидь2017/дозаправка}
-%\input{лидь2017/забелье}
-%\input{лидь2017/тургощь}
-%\input{лидь2017/третий_раз}
-%\input{лидь2017/антистапель}
-%\input{лидь2017/автовыброска}
-%\input{лидь2017/заключение}
+\input{лидь2017/часть3}
+\input{лидь2017/аннотация}
+\afterpage{\blankpage}
+\input{лидь2017/а_не_пошло_бы_все}
+\input{лидь2017/авантюра}
+\input{лидь2017/автозаброска}
+\input{лидь2017/радогощь}
+\input{лидь2017/гэс}
+\input{лидь2017/село_лидь}
+\input{лидь2017/дозаправка}
+\input{лидь2017/забелье}
+\input{лидь2017/тургощь}
+\input{лидь2017/третий_раз}
+\input{лидь2017/антистапель}
+\input{лидь2017/автовыброска}
+\input{лидь2017/заключение}
 %
 % ЧАСТЬ 4 - ПЕСЬ 2018
 %
-%\input{песь2018/часть4}
-%\input{песь2018/аннотация}
-%\afterpage{\blankpage}
-%\input{песь2018/раскрась_это_черным}
+\input{песь2018/часть4}
+\input{песь2018/аннотация}
+\afterpage{\blankpage}
+\input{песь2018/раскрась_это_черным}
 %
 % ЧАСТЬ 5 - ЧАГОДОЩА 2019
 %
-%\input{чагодоща2019/часть5}
-%\input{чагодоща2019/аннотация}
-%\afterpage{\blankpage}
-%\input{чагодоща2019/cold_as_ice}
+\input{чагодоща2019/часть5}
+\input{чагодоща2019/аннотация}
+\afterpage{\blankpage}
+\input{чагодоща2019/cold_as_ice}
 %
 % ЭПИЛОГ
 \input{epilog}
@@ -486,11 +483,11 @@ SmallCapsFeatures={Numbers=OldStyle}]{NewCMMono10-Regular.otf}
 %
 \input{coordinates}
 %
-%\bibliographystyle{apalike2}%{plain}%{alpha}%
-%\bibliographystyle{abbrvnat} % best!
 \bibliographystyle{abbrvnatmy.bst} % fixed best!
 
 \bibliography{bibliography}
+\addcontentsline{toc}{chapter}{Литература}
+%
 \input{lastpage}
 }
 \end{document}
